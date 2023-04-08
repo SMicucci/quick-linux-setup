@@ -12,10 +12,10 @@ alias fgrep='fgrep --color=auto'
 alias egrep='egrep --color=auto'
 alias tree='tree -C'
 # shortcut alias
-alias l='ls -CF'
-alias ll='ls -lF'
-alias la='ls -a'
-alias lla='ls -la'
+alias l='ls'
+alias ll='ls -l'
+alias la='ls -A'
+alias lla='ls -lA'
 
 # Add an "alert" alias for long running commands.  Use like so:
 #   sleep 10; alert
@@ -25,10 +25,10 @@ alias alert='notify-send --urgency=low -i "$([ $? = 0 ] && echo terminal || echo
 parse_git_branch(){
 	git branch 2> /dev/null | sed -e '/^[^*]/d' -e 's/* \(.*\)/(\1)/'
 }
-RED="\e[38;2;255;0;0m"
-BLUE="\e[38;2;0;127;255m"
-GREEN="\e[38;2;0;255;0m"
-RESET="\e[0m"
+RED="\[\e[38;2;255;0;0m\]"
+BLUE="\[\e[38;2;0;127;255m\]"
+GREEN="\[\e[38;2;0;255;0m\]"
+RESET="\[\e[0m\]"
 
 PS1="${BLUE}\u${RESET}@\H: ${GREEN}\w${RED} \$(parse_git_branch)${RESET}\$ "
 
