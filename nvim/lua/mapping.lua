@@ -14,6 +14,36 @@ vim.keymap.set('n','<M-c>p',':cprev<Enter> zz')		-- thank you windows :3
 vim.keymap.set('n','n','nzz')
 vim.keymap.set('n','N','Nzz')
 
+--	##	connect clipboard
+if (vim.fn.has("unix") == 1) then
+	vim.g.clipboard = {
+		name = 'wl-clipboard',
+		copy = {
+			['+'] = 'wl-copy',
+			['*'] = 'wl-copy',
+		},
+		paste = {
+			['+'] = 'wl-paste',
+			['*'] = 'wl-paste',
+		},
+		cache_enabled = 0,
+	}
+end
+if (vim.fn.has("wsl") == 1) then
+	vim.g.clipboard = {
+		name = 'WslClipboard',
+		copy = {
+			['+'] = 'clip.exe',
+			['*'] = 'clip.exe',
+		},
+		paste = {
+			['+'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+			['*'] = 'powershell.exe -c [Console]::Out.Write($(Get-Clipboard -Raw).tostring().replace("`r", ""))',
+		},
+		cache_enabled = 0,
+	}
+end
+
 --	##	user command
 vim.api.nvim_create_user_command('Tags','!ctags -R',{})
 
@@ -22,6 +52,8 @@ vim.api.nvim_create_user_command('Tags','!ctags -R',{})
 --	##	harpoon? nope
 vim.keymap.set('n','tl',function() vim.cmd('tabnext') end)
 vim.keymap.set('n','th',function() vim.cmd('tabprev') end)
+vim.keymap.set('n','<C-k>',function() vim.cmd('tabnext') end)
+vim.keymap.set('n','<C-j>',function() vim.cmd('tabprev') end)
 vim.keymap.set('n','tk',function() vim.cmd('tabnext') end)
 vim.keymap.set('n','tj',function() vim.cmd('tabprev') end)
 vim.keymap.set('n','tn',function() vim.cmd('tabnew') end)
@@ -60,6 +92,15 @@ if (vim.g.plugs["telescope.nvim"] ~= nil) then
 	vim.keymap.set('i','<M-s>', function() actions.select_horizontal() end)
 	--]]
 end
+
+--	##	gitsigns
+if (vim.g.plugs["gitsigns.nvim"] ~= nil) then
+	local gitsigns = require('gitsigns')
+	vim.keymap.set('n','<Leader>glb',gitsigns.toggle_current_line_blame)
+	vim.keymap.set('n','<Leader>gb',gitsigns.toggle_current_line_blame)
+	vim.keymap.set('n','<Leader>gd',gitsigns.toggle_deleted)
+end
+
 
 --	##	mason-lspconfig
 --		this mapping is located on lua/plugin/lsp-config.lua

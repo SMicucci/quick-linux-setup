@@ -36,10 +36,14 @@ vim.call('plug#begin')
 	Plug('hrsh7th/vim-vsnip')
 	Plug('hrsh7th/vim-vsnip-integ')
 	Plug('rafamadriz/friendly-snippets')
+
 --	git implementation i guess
 	Plug('neogitorg/neogit', { ['tag'] = 'v0.0.1'})
 	Plug('sindrets/diffview.nvim')
 	Plug('rafamadriz/neon', { ['as'] = 'neon' })
+
+--	git diff in file
+	Plug('lewis6991/gitsigns.nvim')
 
 --	trying to fix C# lsp		# was required just to build in linux the project lmao
 	Plug('oranget/vim-csharp')

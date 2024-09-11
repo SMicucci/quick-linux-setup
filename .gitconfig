@@ -1,0 +1,23 @@
+[user]
+	name = Simone Micucci
+	email = s.micucci00@gmail.com
+[alias]
+	br = branch
+	cm = commit
+	ck = checkout
+	df = diff
+	st = status -sb
+	amend = commit --amend
+	last = log -1 HEAD
+	l = log --decorate --oneline --graph -n 10
+	adog = log --all --decorate --oneline --graph
+	unstage = reset HEAD
+	undo = reset --hard HEAD~1
+[core]
+	editor = nvim
+[help]
+	autocorrect = 20
+[merge]
+	tool = nvimdiff
+[mergetool "nvimdiff"]
+	cmd = nvim -d \"$LOCAL\" \"$REMOTE\" \"$MERGED\"

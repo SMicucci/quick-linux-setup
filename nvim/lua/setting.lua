@@ -2,13 +2,12 @@
 --		SETTINGS
 --	################
 
-vim.o.background = 'dark'
 vim.o.mousehide = true
 vim.o.expandtab = false
 vim.o.number = true
 vim.o.relativenumber = false
 vim.o.showtabline = 2
-vim.o.syntax = true
+vim.o.syntax = 'on'
 vim.o.termguicolors = true
 vim.o.wildmenu = true
 vim.o.wildoptions = 'pum'
@@ -51,6 +50,7 @@ vim.api.nvim_create_autocmd({'BufNewFile','BufRead'}, {
 --	##############
 --	vim.cmd.colorscheme('sonokai')
 --	vim.cmd.colorscheme('atom')
+	vim.cmd.colorscheme('one')
 --	vim.cmd.colorscheme('onedark')
 --	vim.cmd.colorscheme('challenger_deep')
 --		light colorscheme o.O
@@ -58,4 +58,4 @@ vim.api.nvim_create_autocmd({'BufNewFile','BufRead'}, {
 --		transp combo o.O
 --	vim.cmd.colorscheme('carbonized-dark')
 --	vim.cmd.colorscheme('flattened-dark')
-	vim.cmd.colorscheme('materialbox')
+--	vim.cmd.colorscheme('materialbox')
